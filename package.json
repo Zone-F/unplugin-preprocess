@@ -89,9 +89,20 @@
     "lint": "eslint .",
     "play": "npm -C playground run dev",
     "prepublishOnly": "npm run build",
-    "release": "bumpp && npm publish",
+    "release": "bumpp",
     "start": "esno src/index.ts",
     "test": "vitest"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "npm run lint -- --fix",
+      "git add"
+    ]
   },
   "peerDependencies": {
     "@nuxt/kit": "^3",
@@ -136,6 +147,8 @@
     "eslint": "^8.55.0",
     "esno": "^4.0.0",
     "fast-glob": "^3.3.2",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "nodemon": "^3.0.2",
     "rimraf": "^5.0.5",
     "rollup": "^4.6.1",
