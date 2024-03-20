@@ -93,17 +93,6 @@
     "start": "esno src/index.ts",
     "test": "vitest"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "npm run lint -- --fix",
-      "git add"
-    ]
-  },
   "peerDependencies": {
     "@nuxt/kit": "^3",
     "@nuxt/schema": "^3",
@@ -113,7 +102,13 @@
     "webpack": "^4 || ^5"
   },
   "peerDependenciesMeta": {
-    "webpack": {
+    "@nuxt/kit": {
+      "optional": true
+    },
+    "@nuxt/schema": {
+      "optional": true
+    },
+    "esbuild": {
       "optional": true
     },
     "rollup": {
@@ -122,13 +117,7 @@
     "vite": {
       "optional": true
     },
-    "esbuild": {
-      "optional": true
-    },
-    "@nuxt/kit": {
-      "optional": true
-    },
-    "@nuxt/schema": {
+    "webpack": {
       "optional": true
     }
   },
@@ -157,5 +146,16 @@
     "vite": "^5.0.4",
     "vitest": "^0.34.6",
     "webpack": "^5.89.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "npm run lint -- --fix",
+      "git add"
+    ]
   }
 }
